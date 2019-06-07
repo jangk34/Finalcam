@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.MainMapper">
+	 <select id="getMainList" resultType="MainDTO">
+ 	SELECT * FROM main
+ </select>
+ <insert id="insertMain" parameterType="MainDTO">
+  	INSERT INTO main(name,email,password) values(#{name},#{email},#{password})
+ </insert>
+ 
+ <!-- 로그인  -->
+	<select id="getMainLogin" parameterType="MainDTO" resultType="MainDTO">
+	SELECT 
+	userno,
+	email,
+	password,
+	name,
+	address
+	FROM main
+	WHERE email=#{email} AND password=#{password}
+	</select>
+</mapper>
