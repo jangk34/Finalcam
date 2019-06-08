@@ -93,14 +93,14 @@
  <button id="analysis">분류</button>
  
  
- <!-- <script>
+<script>
 $('#analysis').click(function(){
  	/* $('#region option:selected').val(); */
  	var regionval = $('#region option:selected').val();
  	var ajaxview = $('#ajaxview');
  	var cont = '';
  	$.ajax({
- 		url : "http://localhost:9000/select.do", //http://localhost:8080/cam/glamcamanlysis.do?regionval=강원도
+ 		url : "http://localhost:9000/select.do", //http://localhost:8080/cam/glamcamAnalysis.do?regionval=강원도
  		method : "GET",
  		crossDomain:true,
  		data : {
@@ -112,19 +112,20 @@ $('#analysis').click(function(){
  			/* for ( var i = 0; i<data.length; i++) {
  				console.log(data[i].camname)
  			}  */
+ 			console.table(data)
  			    cont += "<div style='display:flex'>"
 				cont += "<div style='width:33%'>캠핑장이름</div>";
 				cont += "<div style='width:33%'>캠핑장주소</div>";
 				cont += "<div style='width:33%'>캠핑장번호</div>";
 				cont += "</div>"
- 			$.each(data, function(index, item) {  //for ( var i = 0; i<data.length; i++) { } 와같음
+ 			$.each(data, function(i, item) {  //for ( var i = 0; i<data.length; i++) { } 와같음
  			      // 그리고 index부터 item의 수만큼 수행 된다는 의미, index는 0을 초기값으로 함
  			      //index = i, item 은 데이터길이
  				/* console.log(data[index].camname) */
  				cont += "<div style='display:flex'>";
- 				cont += "<div style='width:33%'>"+data[index].camname+"</div>";
- 				cont += "<div style='width:33%'>"+data[index].camnewadd+"</div>";
- 				cont += "<div style='width:33%'>"+data[index].camtel+"</div>";
+ 				cont += "<div style='width:33%'>"+data[i].camname+"</div>";
+ 				cont += "<div style='width:33%'>"+data[i].camnewadd+"</div>";
+ 				cont += "<div style='width:33%'>"+data[i].camtel+"</div>";
  				cont += "</div>"
  			})
  			ajaxview.html(cont);
@@ -134,40 +135,8 @@ $('#analysis').click(function(){
  	})
 })
  </script> 
+ <div id="ajaxview"></div> 
  
- <div id="ajaxview"></div> -->
- 
- <script>
-$('#analysis').click(function(){
- 	/* $('#region option:selected').val(); */
- 	var regionval = $('#region option:selected').val();
- 	var ajaxview = $('#ajaxview');
- 	var cont = '';
- 	$.ajax({
- 		url : "http://localhost:9000/select.do", //http://localhost:8080/cam/glamcamanlysis.do?regionval=강원도
- 		method : "GET",
- 		crossDomain:true,
- 		data : {
- 			"regionval" : regionval  // 키,밸류
- 		},
- 		success : function(data){ // 
- 			/*  console.table(data.length)
- 			console.log(data[0].camname)  // .객체명 */
- 			/* for ( var i = 0; i<data.length; i++) {
- 				console.log(data[i].camname)
- 			}  */
- 			
- 			console.table(data)
- 			})
- 			ajaxview.html(cont);
- 		},error:function(error){
- 			console.table(error)
- 		}
- 	})
-})
- </script> 
- 
- <div id="ajaxview"></div> -->
                <!-- 반응형 클릭 -->
 <div class="tile s-12 m-6 l-4" style="width:30%; height:250px; margin-right:2%"> 
   <img src='http://www.blueb.co.kr/SRC2/_image/s_01.jpg'/>
