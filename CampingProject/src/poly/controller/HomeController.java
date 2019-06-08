@@ -51,7 +51,6 @@ public class HomeController {
 	public String mainInsertproc(HttpServletRequest req,Model model) throws Exception {
 		log.info("start" +this.getClass()); // this = 클래스명 getcl = 클래스 정보
 		
-		
 		String name = CmmUtil.nvl(req.getParameter("name"));
 		log.info("name" + name);
 		String email = CmmUtil.nvl(req.getParameter("email"));
@@ -86,7 +85,6 @@ public class HomeController {
 		log.info("end" +this.getClass());
 			return "/alert";
 	}
-	
 	//일반 로그인 
 			@RequestMapping(value="/main/loginproc",method=RequestMethod.POST)
 			public String mainLoginproc(HttpServletRequest request,HttpSession session,Model model) throws Exception {

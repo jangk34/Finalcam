@@ -1,7 +1,9 @@
+<%@page import="java.util.List"%>
 <%@page import="poly.dto.RestDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>4
-     <% RestDTO cDTO = (RestDTO)request.getAttribute("cDTO"); %>
+    pageEncoding="UTF-8"%>
+     <% RestDTO cDTO = (RestDTO)request.getAttribute("cDTO"); 
+    %>
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
@@ -80,7 +82,7 @@
             <div class="line">
                <div class="margin">
                
-               
+               lakdwalkd 나는 이제 깨우
                <div><h3>asdkawdkalwdjkalwdjaklwkdlakdwalkd 나는 이제 깨우친다</h3></div>
                
                <!-- 시설정보 내용 -->
@@ -93,9 +95,9 @@
 
                <div class="ciz_name_areai">
 
-                  <input type="text" maxlength="30"
+                   <input type="text" maxlength="30"
                      style="word-break: break-all; width: 100%; border: 0; margin-left: auto; margin-right: auto; display: block; text-align: center;"
-                     class="name" readonly value="<%=cDTO.getCamname()%>" />
+                     class="name" readonly value="<%cDTO.getCamname(); %>"/>
                </div>
             </div>
             <div class="ci_box_areai">
@@ -106,23 +108,26 @@
                      <div style="width: 100%">
                         <div style="margin-top:6px; margin-bottom:40px;">
                            <p style="float: right" class="icon-pointer"></p>
-                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;"><캠핑지 주소></p>
+                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 주소</p>
                            <p name="txt" style="font-size:12px; width: 100%; border: 0; ">
                               <%=cDTO.getCamnewadd()%>
                            </p>
                         </div>
                      <!-- 전화번호  -->
                         <div style="margin-top:6px; margin-bottom:40px;">
-                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;"><캠핑지 번호></p>
+                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 번호</p>
                            <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamtel()%></p>
                         </div>
                      <!-- 여는 시간  -->
                         <div style="margin-top:6px; margin-bottom:40px;">
-                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;"><캠핑지 구분></p>
+                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 구분</p>
                            <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamctg() %></p>
                         </div>
+                        <div style="margin-top:6px; margin-bottom:40px;">
+                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 구분</p>
+                           <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamno() %></p>
+                        </div>
                         
-                       
                      </div>      
                   
                      <!-- 글 내용 -->

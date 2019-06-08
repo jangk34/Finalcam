@@ -17,6 +17,14 @@ public class RestDTO {
 	private String Camsite;
 	private String Campark;
 	private String Camconv;
+	private String regionval;
+	
+	public String getRegionval() {
+		return regionval;
+	}
+	public void setRegionval(String regionval) {
+		this.regionval = regionval;
+	}
 	
 	public String getCamno() {
 		return Camno;

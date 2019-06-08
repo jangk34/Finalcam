@@ -12,12 +12,10 @@ public interface CamMapper {
 
 	public List<RestDTO> getCamList() throws Exception;
 
+	public List<RestDTO> getcamAnalysis(RestDTO cDTO) throws Exception;
 
 
 
-
-
-	
 
 	
 }

@@ -4,9 +4,11 @@
 <mapper namespace="poly.persistance.mapper.CamMapper">
  <select id="getCamList" resultType="RestDTO">
  	SELECT * FROM rest
-  	 
  </select>
- 
+ <select id="getcamAnalysis" parameterType="RestDTO" resultType="RestDTO">
+ SELECT * FROM rest 
+WHERE Camnewadd LIKE CONCAT (#{regionval},'%')
+</select>
 
 </mapper>
 

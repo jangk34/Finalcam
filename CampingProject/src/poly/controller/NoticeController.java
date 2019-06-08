@@ -104,5 +104,4 @@ public class NoticeController {
 		
 		return "/notice/noticeDetail";
 	}
-	
 }

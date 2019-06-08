@@ -17,7 +17,7 @@ import poly.service.IRecommendService;
 	public class CamService implements ICamService {
 	
 		@Resource(name="CamMapper")
-		private CamMapper camMapper;
+		private CamMapper camMapper; // 클래스명, 인스턴스명
 
 		@Override
 		public List<RestDTO> getCamList() throws Exception {
@@ -25,9 +25,11 @@ import poly.service.IRecommendService;
 			return camMapper.getCamList();
 		}
 
-
-
-
+		@Override
+		public List<RestDTO> getcamAnalysis(RestDTO cDTO) throws Exception { // 결과형, 메소드명 
+			// TODO Auto-generated method stub
+			return (List<RestDTO>)camMapper.getcamAnalysis(cDTO); // 
+		}
 
 
 
