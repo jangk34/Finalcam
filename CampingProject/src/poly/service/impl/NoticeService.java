@@ -32,7 +32,4 @@ public class NoticeService implements INoticeService{
 	public NoticeDTO getnoticeDetail(NoticeDTO nDTO) throws Exception {
 		return noticeMapper.getNoticeDetail(nDTO);
 	}
-
-
-	
 }

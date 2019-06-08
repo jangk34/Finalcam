@@ -16,12 +16,16 @@
       <link rel="stylesheet" href="/resource/css/responsee.css">
       <link rel="stylesheet" href="/resource/owl-carousel/owl.carousel.css">
       <link rel="stylesheet" href="/resource/owl-carousel/owl.theme.css"> 
+       <link rel="stylesheet" href="/resource/css/clicktab.css">
       <!-- CUSTOM STYLE -->
       <link rel="stylesheet" href="/resource/css/mouseover.css"> 
       <link rel="stylesheet" href="/resource/css/template-style.css"> 
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
       <script type="text/javascript" src="/resource/js/jquery-3.4.1.min.js"></script>
-      <script type="text/javascript" src="/resource/js/jquery-ui.min.js"></script>    
+      <script type="text/javascript" src="/resource/js/jquery-ui.min.js"></script> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+      <script type="text/javascript" src="/resource/js/clicktab.js"></script> 
+
    </head>
    <body class="size-1140">
       <!-- TOP NAV WITH LOGO -->  
@@ -35,9 +39,9 @@
                   <p class="nav-text">매뉴 목록</p>
                   <div class="top-nav s-12 l-5">h
                      <ul class="right top-ul chevron">
-                        <li><a onclick = "pageMove.singleUrlParam('autocam','list')">오토캠핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','autocamlist')">오토캠핑</a>
                         </li>
-                        <li><a onclick = "pageMove.singleUrlParam('glamcam','list')">글램핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">글램핑</a>
                         </li>
                      </ul>
                   </div>
@@ -80,8 +84,18 @@
           <div id="content">
             <div class="line">
                <div class="margin">
+               <!-- 탭  -->
                
-<select id="region" >
+          <!--      <span class="dropdown-el">
+    <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance"><label for="sort-relevance">블루비</label>
+    <input type="radio" name="sortType" value="Popularity" id="sort-best"><label for="sort-best">네이버</label>
+    <input type="radio" name="sortType" value="PriceIncreasing" id="sort-low"><label for="sort-low">다음</label>
+    <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high"><label for="sort-high">지마켓</label>
+    <input type="radio" name="sortType" value="ProductBrand" id="sort-brand"><label for="sort-brand">옥션</label>
+    <input type="radio" name="sortType" value="ProductName" id="sort-name"><label for="sort-name">인터파크</label>
+  </span> -->
+ 
+<select id="region" class="dropdown-el">
 <option value="강원도">강원도</option>
 <option value="경기도">경기도</option>
 <option value="경상남도">경상남도</option>
@@ -114,16 +128,17 @@ $('#analysis').click(function(){
  			}  */
  			console.table(data)
  			    cont += "<div style='display:flex'>"
-				cont += "<div style='width:33%'>캠핑장이름</div>";
-				cont += "<div style='width:33%'>캠핑장주소</div>";
-				cont += "<div style='width:33%'>캠핑장번호</div>";
+				cont += "<div style='width:33%'>캠핑장 이름</div>";
+				cont += "<div style='width:33%'>캠핑장 주소</div>";
+				cont += "<div style='width:33%'>캠핑장 전화번호</div>";
 				cont += "</div>"
  			$.each(data, function(i, item) {  //for ( var i = 0; i<data.length; i++) { } 와같음
  			      // 그리고 index부터 item의 수만큼 수행 된다는 의미, index는 0을 초기값으로 함
  			      //index = i, item 은 데이터길이
  				/* console.log(data[index].camname) */
  				cont += "<div style='display:flex'>";
- 				cont += "<div style='width:33%'>"+data[i].camname+"</div>";
+ 				cont += "<div style='width:33%'><a href='/cam/glamcamdetail.do?Camno="+data[i].camno+"'>"+data[i].camname+"</a></div>"
+ 				//cont += '<div onclick = pageMove.detailParam("'+data[i].camno+'"); style="width:33%">'+data[i].camname+'</div>';
  				cont += "<div style='width:33%'>"+data[i].camnewadd+"</div>";
  				cont += "<div style='width:33%'>"+data[i].camtel+"</div>";
  				cont += "</div>"
@@ -285,8 +300,10 @@ $('#analysis').click(function(){
             </div>
          </div>
       </footer>
+      
       <script type="text/javascript" src="/resource/js/responsee.js"></script> 
-      <script type="text/javascript" src="/resource/owl-carousel/owl.carousel.js"></script>   
+      <script type="text/javascript" src="/resource/owl-carousel/owl.carousel.js"></script>  
+      
       <script type="text/javascript">
          jQuery(document).ready(function($) {  
            var owl = $('#news-carousel');

@@ -3,11 +3,30 @@
 <!-- JAVA와 연결할 Mapper 파일 설정 -->
 <mapper namespace="poly.persistance.mapper.CamMapper">
  <select id="getCamList" resultType="RestDTO">
- 	SELECT * FROM rest
+ 	SELECT 
+ 		* 
+ 	FROM rest
  </select>
  <select id="getcamAnalysis" parameterType="RestDTO" resultType="RestDTO">
- SELECT * FROM rest 
+ SELECT 
+ 	* 
+ FROM rest 
 WHERE Camnewadd LIKE CONCAT (#{regionval},'%')
+</select>
+<select id="getglamcamdetail" parameterType="RestDTO" resultType="RestDTO">
+SELECT
+	Camno,
+	Camname,
+	Camctg,
+	Camnewadd,
+	Camtel,
+	Camlon,
+	Camlat,
+	Camconv,
+	Camoldadd
+FROM rest
+WHERE Camno=#{Camno} <!-- 디비 테이블 컬럼명 = #은 DTO에있는명 -->
+
 </select>
 
 </mapper>

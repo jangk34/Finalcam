@@ -9,9 +9,16 @@
  <insert id="insertNotice" parameterType="NoticeDTO">
  	INSERT INTO notice(title,content) values(#{title},#{content})
  </insert>
-<select id="getNoticeDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
-	SELECT * FROM notice
-	WHERE noticeno = #{noticeno}  
+ <!-- 캠핑 상세 -->
+<select id="getnoticeDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
+	SELECT 
+   Camname,
+   Camnewadd,
+   Camtel,
+   Camctg,
+   regionval
+   FROM rest
+   WHERE regionval=#{regionval}
 </select>
 </mapper>
 

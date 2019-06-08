@@ -52,7 +52,6 @@ public class NoticeController {
 		return "/notice/noticeinsertview";
 	}
 	
-	
 	@RequestMapping (value="/insertproc")
 	public String noticeInsertproc(HttpServletRequest req, Model model) throws Exception {
 		

@@ -1,8 +1,11 @@
 <%@page import="java.util.List"%>
 <%@page import="poly.dto.RestDTO"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="poly.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <% RestDTO cDTO = (RestDTO)request.getAttribute("cDTO"); 
+     System.out.println("camname : "+ CmmUtil.nvl(cDTO.getCamname()));
     %>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -15,6 +18,7 @@
       <link rel="stylesheet" href="/resource/css/responsee.css">
       <link rel="stylesheet" href="/resource/owl-carousel/owl.carousel.css">
       <link rel="stylesheet" href="/resource/owl-carousel/owl.theme.css"> 
+      <link rel="stylesheet" href="/resource/css/camdetail.css"> 
       <!-- CUSTOM STYLE -->
       <link rel="stylesheet" href="/resource/css/mouseover.css"> 
       <link rel="stylesheet" href="/resource/css/template-style.css"> 
@@ -34,9 +38,9 @@
                   <p class="nav-text">매뉴 목록</p>
                   <div class="top-nav s-12 l-5">h
                      <ul class="right top-ul chevron">
-                        <li><a onclick = "pageMove.singleUrlParam('autocam','list')">오토캠핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','autocamlist')">오토캠핑</a>
                         </li>
-                        <li><a onclick = "pageMove.singleUrlParam('glamcam','list')">글램핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">글램핑</a>
                         </li>
                      </ul>
                   </div>
@@ -81,10 +85,6 @@
           <div id="content">
             <div class="line">
                <div class="margin">
-               
-               lakdwalkd 나는 이제 깨우
-               <div><h3>asdkawdkalwdjkalwdjaklwkdlakdwalkd 나는 이제 깨우친다</h3></div>
-               
                <!-- 시설정보 내용 -->
       <div class="container">
          <!--이미지 -->
@@ -97,11 +97,11 @@
 
                    <input type="text" maxlength="30"
                      style="word-break: break-all; width: 100%; border: 0; margin-left: auto; margin-right: auto; display: block; text-align: center;"
-                     class="name" readonly value="<%cDTO.getCamname(); %>"/>
+                     class="name" readonly value="<%=cDTO.getCamname() %>"/>
                </div>
             </div>
-            <div class="ci_box_areai">
-               style="margin-top: 2%; width: 100%; margin-bottom: 2%">
+             <div class="ci_box_areai">
+               <div style="margin-top: 2%; width: 100%; margin-bottom: 2%">
                <div class="cizinfo_areai">
                   <div class="list_cizinfo" style="padding:15px;">
                      <!-- 주소  -->
@@ -110,26 +110,27 @@
                            <p style="float: right" class="icon-pointer"></p>
                            <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 주소</p>
                            <p name="txt" style="font-size:12px; width: 100%; border: 0; ">
-                              <%=cDTO.getCamnewadd()%>
+                              도로명 = <%=cDTO.getCamnewadd()%> <br> 번지 = <%=cDTO.getCamoldadd() %>
                            </p>
                         </div>
                      <!-- 전화번호  -->
                         <div style="margin-top:6px; margin-bottom:40px;">
-                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 번호</p>
+                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 전화번호</p>
                            <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamtel()%></p>
                         </div>
-                     <!-- 여는 시간  -->
+                     
+                     
                         <div style="margin-top:6px; margin-bottom:40px;">
                            <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 구분</p>
                            <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamctg() %></p>
                         </div>
                         <div style="margin-top:6px; margin-bottom:40px;">
-                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 구분</p>
-                           <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamno() %></p>
-                        </div>
+                           <p style="text-align:center; font-size:18px; line-height:18px; font-weight:bold;">캠핑지 시설</p>
+                           <p style="width: 100%; border: 0; font-size:12px; text-align:center;"/><%=cDTO.getCamconv() %></p>
+                        </div> 
                         
                      </div>      
-                  
+                   
                      <!-- 글 내용 -->
                            <%-- <p style="float: left">CONTENT :</p>
                         </div>
@@ -153,46 +154,113 @@
          	<!-- daum map -->
 	
 		<div id="map" style="width:100%;height:400px; margin:auto;"></div>
-		</script> 
-
-
-      
       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7047c4bc384caf922e8f2bbcdc362d2f"></script>
     
  <script>
-      
- var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
- mapOption = { 
-     center: new daum.maps.LatLng(37.503247, 127.026827), // 지도의 중심좌표
-     level: 3 // 지도의 확대 레벨
- };
+
+<%-- var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+    center: new daum.maps.LatLng(<%=cDTO.getCamlat()%>,<%=cDTO.getCamlon()%> ), // 지도의 중심좌표
+    level: 1 // 지도의 확대 레벨
+};  
+
+//지도를 생성합니다    
+var map = new daum.maps.Map(mapContainer, mapOption); 
+
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
+
+var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+infowindow = new daum.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+//현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+//지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+    if (status === daum.maps.services.Status.OK) {
+        var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+        detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+        
+        var content = '<div class="bAddr">' +
+                        '<span class="title">법정동 주소정보</span>' + 
+                        detailAddr + 
+                    '</div>';
+
+        // 마커를 클릭한 위치에 표시합니다 
+        marker.setPosition(mouseEvent.latLng);
+        marker.setMap(map);
+
+        // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+    }   
+});
+});
+
+//중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+daum.maps.event.addListener(map, 'idle', function() {
+searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+});
+
+function searchAddrFromCoords(coords, callback) {
+// 좌표로 행정동 주소 정보를 요청합니다
+geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+}
+
+function searchDetailAddrFromCoords(coords, callback) {
+// 좌표로 법정동 상세 주소 정보를 요청합니다
+geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+}
+
+//지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+function displayCenterInfo(result, status) {
+if (status === daum.maps.services.Status.OK) {
+    var infoDiv = document.getElementById('centerAddr');
+
+    for(var i = 0; i < result.length; i++) {
+        // 행정동의 region_type 값은 'H' 이므로
+        if (result[i].region_type === 'H') {
+            infoDiv.innerHTML = result[i].address_name;
+            break;
+        }
+    }
+}    
+} --%>
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = { 
+    center: new daum.maps.LatLng(<%=cDTO.getCamlat()%>,<%=cDTO.getCamlon()%> ), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};
 
 var map = new daum.maps.Map(mapContainer, mapOption);
 
 //마커가 표시될 위치입니다 
-var markerPosition  = new daum.maps.LatLng(37.503247, 127.026827); 
+var markerPosition  = new daum.maps.LatLng(<%=cDTO.getCamlat()%>,<%=cDTO.getCamlon()%> ); 
 
 //마커를 생성합니다
 var marker = new daum.maps.Marker({
- position: markerPosition
+position: markerPosition
 });
 
 //마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
 
-var iwContent = '<div style="padding:5px;">KEUN COMPANY <br>강남구 강남대로 106길 </br> <a href="http://map.daum.net/link/map/KEUN COMPANY,37.503247, 127.026827" style="color:blue" target="_blank">큰지도보기</a> <a href="http://map.daum.net/link/to/KEUN COMPANY,37.503247, 127.026827" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
- iwPosition = new daum.maps.LatLng(37.503247, 127.026827); //인포윈도우 표시 위치입니다
+var iwContent = '<div style="padding:5px;"> <%=cDTO.getCamname()%> <br><a href="http://map.daum.net/link/map/<%=cDTO.getCamname()%>,<%=cDTO.getCamlat()%>,<%=cDTO.getCamlon()%>" style="color:blue" target="_blank">큰지도보기</a> <a href="http://map.daum.net/link/to/<%=cDTO.getCamname()%>,<%=cDTO.getCamlat()%>,<%=cDTO.getCamlon()%>" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+iwPosition = new daum.maps.LatLng(<%=cDTO.getCamlat()%>,<%=cDTO.getCamlon()%> ); //인포윈도우 표시 위치입니다
 
 //인포윈도우를 생성합니다
 var infowindow = new daum.maps.InfoWindow({
- position : iwPosition, 
- content : iwContent 
+position : iwPosition, 
+content : iwContent 
 });
 
 //마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 infowindow.open(map, marker); 
+
 </script>
-		
 		<div id="fourth-block">
 			<div class="line">
 				<div id="news-carousel" class="owl-carousel owl-theme">
@@ -200,9 +268,6 @@ infowindow.open(map, marker);
 				</div>
 				</div>
       </section>
-      
-      
-      
       <!-- FOOTER -->   
       <footer>
          <div class="line">
@@ -216,9 +281,7 @@ infowindow.open(map, marker);
                </p>
             </div>
          </div>
-         
       </footer>
-      
       <script type="text/javascript" src="/resource/js/responsee.js"></script> 
       <script type="text/javascript" src="/resource/owl-carousel/owl.carousel.js"></script>   
       <script type="text/javascript">

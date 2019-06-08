@@ -8,7 +8,6 @@
 		<typeAlias type="poly.dto.MainDTO" alias="MainDTO" />
 		<typeAlias type="poly.dto.QaDTO" alias="QaDTO"/>
 		<typeAlias type="poly.dto.QaDTO" alias="InqDTO"/>
-		<typeAlias type="poly.dto.RecommendDTO" alias="RecommendDTO"/>
 		<typeAlias type="poly.dto.AnounceDTO" alias="AnounceDTO"/>
 		<typeAlias type="poly.dto.RestDTO" alias="RestDTO"/>
 		

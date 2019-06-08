@@ -140,24 +140,6 @@
                      <i class="icon-sli-puzzle icon2x"></i>
                      <h3>커뮤니티</h3>
                   </div>
-                  <div><button id="jangjax">테스트테스트</button></div>
-                  <script>
-                  $("#jangjax").click(function{
-                	  $.ajax({
-                		url : "http://localhost:8081/notices/select.do",
-                		method : "get",
-                		async : "true",
-                		content-type : "application/json",
-						dataType : "jsonp"
-                		crossDomain : true,
-                		success : function(dat) {
-                			
-                		},error:function(){
-                			
-                		},
-                	  })
-                  }                  
-                  </script>
                   <div class="s-12 m-6 l-3 margin-bottom">
                      <i class="icon-sli-globe-alt icon2x"></i>
                      <h3 onclick = "pageMove.singleUrlParam('inq','one')">1:1문의</h3>
@@ -357,6 +339,7 @@ networkSeries.fontSize = 10;
          });	
           
       </script> 
+      
    </body>
    <%@ include file="/WEB-INF/view/jscss.jsp" %>
 </html>

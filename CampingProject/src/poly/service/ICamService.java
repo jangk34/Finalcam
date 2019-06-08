@@ -10,8 +10,9 @@ public interface ICamService {
 
 	public List<RestDTO> getcamAnalysis(RestDTO cDTO) throws Exception;
 
+	public RestDTO getglamcamdetail(RestDTO cDTO)throws Exception;
 
-
+	
 	
 
 
