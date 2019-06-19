@@ -1,5 +1,6 @@
 package poly.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,6 +33,24 @@ import poly.service.ICamService;
 		public RestDTO getglamcamdetail(RestDTO cDTO) throws Exception {
 			// TODO Auto-generated method stub
 			return camMapper.getglamcamdetail(cDTO);
+		}
+
+		@Override
+		public int getNoticeListTotalCount() throws Exception {
+			// TODO Auto-generated method stub
+			return camMapper.getNoticeListTotalCount();
+		}
+
+		@Override
+		public List<RestDTO> getglamcamList(HashMap<String, Integer> hMap) throws Exception {
+			// TODO Auto-generated method stub
+			return camMapper.getglamcamList(hMap);
+		}
+		
+		@Override
+		public List<RestDTO> getSelect(RestDTO cDTO) throws Exception {
+			// TODO Auto-generated method stub
+			return camMapper.getSelect(cDTO);
 		}
 
 }

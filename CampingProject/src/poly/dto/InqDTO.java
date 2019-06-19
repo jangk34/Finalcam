@@ -7,14 +7,6 @@ public class InqDTO {
 	private String content;
     private String userid;
     private String email;
-    private String setfrom;
-    
-	public String getSetfrom() {
-		return setfrom;
-	}
-	public void setSetfrom(String setfrom) {
-		this.setfrom = setfrom;
-	}
 	public String getUserno() {
 		return userno;
 	}
@@ -45,5 +37,7 @@ public class InqDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+    
+    
     
 }

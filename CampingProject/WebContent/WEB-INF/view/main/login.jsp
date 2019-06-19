@@ -37,9 +37,7 @@
                   <p class="nav-text">매뉴 목록</p>
                   <div class="top-nav s-12 l-5">h
                      <ul class="right top-ul chevron">
-                     <li><a onclick = "pageMove.singleUrlParam('cam','autocamlist')">오토캠핑</a>
-                        </li>
-                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">글램핑</a>
+              <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">캠핑지 목록</a>
                         </li>
                      </ul>
                   </div>
@@ -50,27 +48,16 @@
                   </ul>
                   <div class="top-nav s-12 l-5">
                      <ul class="top-ul chevron">
-                        <li><a onclick = "pageMove.singleUrlParam('recommend','list')">추천캠핑지</a>
-                        </li>
-                        <li>
-                              <li>
-                                 <a>커뮤니티</a>				  
-                                 <ul>
-                                    <li><a>자유게시판</a>
-                                    </li>
-                                    <li><a>질문게시판</a>
-                                    </li>
-                                    <li><a>리뷰</a>
-                                    </li>
-                                 </ul>
-                              </li>
-                        </li>
-                        <% if(session.getAttribute("email") !=null) { %>
+                         <% if(session.getAttribute("email") ==null) { %>
                         <li><a onclick = "pageMove.singleUrlParam('main','login')">로그인</a>
-                        <%}else %>
+                        <%}else{ %>
+                           <li><a href="logout.do
+                           ">로그아웃</a>
+                        <%} %>
+                        </li>
 <%--                          <li><a href="logout.do">로그아웃</a>
                         <%} %>
- --%>                        </li>
+ --%>                       
                      </ul> 
                   </div>
                </div>
@@ -264,10 +251,9 @@
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "Vv8SsVOynvNnVV7YJTIi",
-			callbackUrl: "http://localhost:8080/home.do",
+			callbackUrl: "http://13.125.193.78:8080/home.do",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 49} /* 로그인 버튼의 타입을 지정 */
-			
 		}
 	);
 	

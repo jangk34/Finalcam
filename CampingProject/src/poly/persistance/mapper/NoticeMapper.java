@@ -2,6 +2,8 @@ package poly.persistance.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import config.Mapper;
 import poly.dto.NoticeDTO;
 
@@ -12,7 +14,9 @@ public interface NoticeMapper {
 
 	public int insertNotice(NoticeDTO nDTO) throws Exception;
 
-	public NoticeDTO getNoticeDetail(NoticeDTO nDTO) throws Exception;
+	public List<NoticeDTO> getnoticeList(@Param("pagenum") int pagenum, @Param("contentnum") int contentnum) throws Exception;
 
-	
+	public NoticeDTO getnoticeDetail(NoticeDTO nDTO) throws Exception;
+
+
 }

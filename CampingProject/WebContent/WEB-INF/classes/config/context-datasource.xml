@@ -8,10 +8,11 @@
         class="org.springframework.jdbc.datasource.DriverManagerDataSource"
         lazy-init="false">
  
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" /> 
-        <property name="url" value="jdbc:mysql://localhost:3306/njang?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=Asia/Seoul" />
-        <property name="username" value="jjaa" />
-        <property name="password" value="1234" />
+              <property name="driverClassName" value="com.mysql.jdbc.Driver" /> 
+      	<!--  <property name="url" value="jdbc:mysql://localhost:3306/njang?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=Asia/Seoul" /> -->
+      	<property name="url" value="jdbc:mysql://13.125.193.78:3306/njang?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=Asia/Seoul" />
+        <property name="username" value="jangk34" />
+        <property name="password" value="Tkfkd116!@" />
     </bean>
     
 </beans>

@@ -32,14 +32,12 @@
 			 <div class="line">
                <div class="top-nav">              
                   <div class="logo logo-small">
-                     <a href="home.do"><strong>캠핑고</strong></a>
+                         <a href="home.do"><strong>캠핑고</strong></a>
                   </div>                  
                   <p class="nav-text">매뉴 목록</p>
                   <div class="top-nav s-12 l-5">h
                      <ul class="right top-ul chevron">
-                        <li><a href="qa.jsp">오토캠핑</a>
-                        </li>
-                        <li><a href="services.html">글램핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">캠핑지 목록</a>
                         </li>
                      </ul>
                   </div>
@@ -50,11 +48,13 @@
                   </ul>
                   <div class="top-nav s-12 l-5">
                      <ul class="top-ul chevron">
-                       <li><a onclick = "pageMove.singleUrlParam('cam','autocamlist')">오토캠핑</a>
+                         <% if(session.getAttribute("email") ==null) { %>
+                        <li><a onclick = "pageMove.singleUrlParam('main','login')">로그인</a>
+                        <%}else{ %>
+                           <li><a href="logout.do
+                           ">로그아웃</a>
+                        <%} %>
                         </li>
-                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">글램핑</a>
-                        </li>
-						</ul>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 				<div class="margin">
 					<div class="s-12 l-6">
 						<h2>Vision Design - KEUN Company</h2>
-						<address>
+						<adOdress>
 							<p>
 								<i class="icon-home icon"></i> 서울시 강남구 강남대로 106길
 							</p>
@@ -98,22 +98,26 @@
 								href="https://twitter.com/MyResponsee">Responsee</a>
 						</p>
 					</div>
-					<div class="s-12 l-6">
+					<div class="s-12 l-6"> 
+					 <!--/ing/mailSending.do ? setfrom="adsas  --> 
 						<h2>1:1 문의할 내용</h2>
-						<form class="customform" action="">
+						<form class="customform" action="/inq/mailSending.do" method="post">
 							<div class="s-12 l-7">
-								<input name="" placeholder="고객님 이메일 주소" title="Your e-mail"
-									type="text" />
+								<input name="setfrom" placeholder="고객님 이메일 주소" title="Your e-mail"
+									type="text" /> <!-- 보내는 사람 메일 -->
 							</div>
 							<div class="s-12 l-7">
-								<input name="" placeholder="고객님 성함" title="Your name"
-									type="text" />
+								<input name="title" placeholder="제목" title="title"
+									type="text" /> <!-- 제목 -->
 							</div>
 							<div class="s-12">
-								<textarea placeholder="문의할 내용" name="" rows="5"></textarea>
-							</div>
+								<textarea placeholder="문의할 내용" name="content" rows="5"></textarea>
+							</div> <!-- 문의할 내용 -->
+								<input type="hidden" name="tomail" placeholder="받는사람" title="받는 사람" value="superdeveloper2018@gmail.com" />
+								<!-- 받는 사람 히든처리 -->
 							<div class="s-12 m-6 l-4">
-								<button type="submit">전송</button>
+							<input type ="submit" value="메일 전송" class="btn btn-warning">
+							
 							</div>
 						</form>
 					</div>

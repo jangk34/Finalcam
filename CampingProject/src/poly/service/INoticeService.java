@@ -10,8 +10,11 @@ public interface INoticeService {
 
 	public int insertNotice(NoticeDTO nDTO)throws Exception;
 
-	public NoticeDTO getnoticeDetail(NoticeDTO nDTO)throws Exception;
-	
+	public int getnoticeCount() throws Exception;
+
+	public List<NoticeDTO> getnoticeList(int i, int contentnum) throws Exception;
+
+	public NoticeDTO getnoticeDetail(NoticeDTO nDTO) throws Exception;
 	
 
 }

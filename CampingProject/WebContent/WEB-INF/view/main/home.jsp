@@ -31,9 +31,7 @@
                   <p class="nav-text">매뉴 목록</p>
                   <div class="top-nav s-12 l-5">h
                      <ul class="right top-ul chevron">
-                       <li><a onclick = "pageMove.singleUrlParam('cam','autocamlist')">오토캠핑</a>
-                        </li>
-                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">글램핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">캠핑지 목록</a>
                         </li>
                      </ul>
                   </div>
@@ -44,21 +42,6 @@
                   </ul>
                   <div class="top-nav s-12 l-5">
                      <ul class="top-ul chevron">
-                        <li><a onclick = "pageMove.singleUrlParam('recommend','list')">추천캠핑지</a>
-                        </li>
-                        <li>
-                              <li>
-                                 <a>커뮤니티</a>				  
-                                 <ul>
-                                    <li><a>자유게시판</a>
-                                    </li>
-                                    <li><a>질문게시판</a>
-                                    </li>
-                                    <li><a>리뷰</a>
-                                    </li>
-                                 </ul>
-                              </li>
-                        </li>
                          <% if(session.getAttribute("email") ==null) { %>
                         <li><a onclick = "pageMove.singleUrlParam('main','login')">로그인</a>
                         <%}else{ %>
@@ -81,10 +64,10 @@
                   <div class="carousel-text">
                      <div class="line">
                         <div class="s-12 l-9">
-                           <h2>Theme based on Responsee framework</h2>
+                           <h2>캠핑지를 한눈에 보여주는</h2>
                         </div>
                         <div class="s-12 l-9">
-                           <p>With amazing responsive carousel
+                           <p>캠핑고 !
                            </p>
                         </div>
                      </div>
@@ -95,10 +78,10 @@
                   <div class="carousel-text">
                      <div class="line">
                         <div class="s-12 l-9">
-                           <h2>Build new layout in 10 minutes!</h2>
+                           <h2>지역별로 캠핑지를 안내해주는</h2>
                         </div>
                         <div class="s-12 l-9">
-                           <p>Lightweight, more intuitive and useful responsive CSS framework
+                           <p>캠핑고 !
                            </p>
                         </div>
                      </div>
@@ -109,10 +92,10 @@
                   <div class="carousel-text">
                      <div class="line">
                         <div class="s-12 l-9">
-                           <h2>Design theme is under the MIT license</h2>
+                           <h2>캠핑지 시설과 상세정보를 안내해주는</h2>
                         </div>
                         <div class="s-12 l-9">
-                           <p>Best theme based on Responsee framework
+                           <p>캠핑고 !
                            </p>
                         </div>
                      </div>
@@ -127,20 +110,16 @@
                <p class="subtitile">캠핑 관련
                </p>
                <div class="margin">
-                  <div class="s-12 m-6 l-3 margin-bottom">
+                  <div class="s-12 m-6 l-4 margin-bottom">
                      <i class="icon-sli-people icon2x"></i>
                      <h3 onclick = "pageMove.singleUrlParam('qa','list')">자주하는 질문</h3>
                     <!--  <li><a href="/recommend/list.do">추천캠핑장</a> -->
                   </div>
-                  <div class="s-12 m-6 l-3 margin-bottom">
+                  <div class="s-12 m-6 l-4 margin-bottom">
                      <i class="icon-sli-shield icon2x"></i>
-                     <h3 onclick = "pageMove.singleUrlParam('anounce','list')">공지사항</h3>
+                     <h3 onclick = "location.href='/notice/noticeList.do?pagenum=1&contentnum=10'">공지사항</h3>
                   </div>
-                  <div class="s-12 m-6 l-3 margin-bottom">
-                     <i class="icon-sli-puzzle icon2x"></i>
-                     <h3>커뮤니티</h3>
-                  </div>
-                  <div class="s-12 m-6 l-3 margin-bottom">
+                  <div class="s-12 m-6 l-4 margin-bottom">
                      <i class="icon-sli-globe-alt icon2x"></i>
                      <h3 onclick = "pageMove.singleUrlParam('inq','one')">1:1문의</h3>
                   </div>
@@ -280,18 +259,18 @@ networkSeries.fontSize = 10;
             <div class="line">
                <div id="news-carousel" class="owl-carousel owl-theme">
                   <div class="item">
-                     <h2>Amazing responsive template</h2>
-                     <p class="s-12 m-12 l-8 center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                     <h2>캠핑고는 ?</h2>
+                     <p class="s-12 m-12 l-8 center">지역별 캠핑지 상세정보를 보여주는 사이트
                      </p>
                   </div>
                   <div class="item">
-                     <h2>Responsive components</h2>
-                     <p class="s-12 m-12 l-8 center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                     </p>
+                     <h2>캠핑고 기능은 ?</h2>
+                     <p class="s-12 m-12 l-8 center">캠핑지가 많은 지역중 지역별로 분석하여 보여줄수 있다!
+                                          </p>
                   </div>
                   <div class="item">
-                     <h2>Retina ready</h2>
-                     <p class="s-12 m-12 l-8 center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit  lobortis nisl ut aliquip ex ea commodo consequat.
+                     <h2>준비되셨나요 ?</h2>
+                     <p class="s-12 m-12 l-8 center">캠핑고를 시작해보세요 ! 
                      </p>
                   </div>
                </div>

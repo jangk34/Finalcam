@@ -30,6 +30,18 @@ public class NoticeService implements INoticeService{
 
 	@Override
 	public NoticeDTO getnoticeDetail(NoticeDTO nDTO) throws Exception {
-		return noticeMapper.getNoticeDetail(nDTO);
+		return noticeMapper.getnoticeDetail(nDTO);
+	}
+
+	@Override
+	public int getnoticeCount() throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<NoticeDTO> getnoticeList(int i, int j) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeMapper.getnoticeList(i, j);
 	}
 }

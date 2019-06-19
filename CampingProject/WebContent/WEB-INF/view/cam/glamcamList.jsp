@@ -3,8 +3,7 @@
     <%@page import="poly.dto.RestDTO"%>
 <%@page import="java.util.List"%>
     <% List<RestDTO> cList = (List<RestDTO>)request.getAttribute("cList");
-     String jjaa = (String)request.getAttribute("jjaa");
-    %>
+   		RestDTO cDTO = (RestDTO)request.getAttribute("cDTO");		%>
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
@@ -39,9 +38,7 @@
                   <p class="nav-text">매뉴 목록</p>
                   <div class="top-nav s-12 l-5">h
                      <ul class="right top-ul chevron">
-                        <li><a onclick = "pageMove.singleUrlParam('cam','autocamlist')">오토캠핑</a>
-                        </li>
-                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">글램핑</a>
+                        <li><a onclick = "pageMove.singleUrlParam('cam','glamcamlist')">캠핑지 목록</a>
                         </li>
                      </ul>
                   </div>
@@ -52,22 +49,12 @@
                   </ul>
                   <div class="top-nav s-12 l-5">
                      <ul class="top-ul chevron">
-                        <li><a onclick = "pageMove.singleUrlParam('recommend','list')">추천캠핑지</a>
-                        </li>
-                        <li>
-                              <li>
-                                 <a>커뮤니티</a>				  
-                                 <ul>
-                                    <li><a>자유게시판</a>
-                                    </li>
-                                    <li><a>질문게시판</a>
-                                    </li>
-                                    <li><a>리뷰</a>
-                                    </li>
-                                 </ul>
-                              </li>
-                        </li>
+                         <% if(session.getAttribute("email") ==null) { %>
                         <li><a onclick = "pageMove.singleUrlParam('main','login')">로그인</a>
+                        <%}else{ %>
+                           <li><a href="logout.do
+                           ">로그아웃</a>
+                        <%} %>
                         </li>
                      </ul> 
                   </div>
@@ -78,7 +65,7 @@
       <section>
          <div id="head">
             <div class="line">
-               <h1>글램핑</h1>
+               <h1>지역별 캠핑지 조회</h1>
             </div>
          </div>
           <div id="content">
@@ -95,17 +82,16 @@
     <input type="radio" name="sortType" value="ProductName" id="sort-name"><label for="sort-name">인터파크</label>
   </span> -->
  
-<select id="region" class="dropdown-el">
+<select id="region" style="width:350px; padding:0px 15px 0px 15px; height:38px; font-size:13px; margin-right:5px;">
 <option value="강원도">강원도</option>
 <option value="경기도">경기도</option>
 <option value="경상남도">경상남도</option>
 <option value="경상북도">경상북도</option>
 <option value="대구광역시">대구광역시</option>
 <option value="대전광역시">대전광역시</option>
-<option value="광주광역시">광주광역시</option>
+<option value="광주광역시">광주광역시</option> 
  </select>
- <button id="analysis">분류</button>
- 
+ <button id="analysis" style="font-size:12px; padding:12px 20px 9px 20px; border:1px solid #ccc; box-sizing:border-box; background:#f9f9f9; cursor:pointer;">분류</button>
  
 <script>
 $('#analysis').click(function(){
@@ -127,20 +113,18 @@ $('#analysis').click(function(){
  				console.log(data[i].camname)
  			}  */
  			console.table(data)
- 			    cont += "<div style='display:flex'>"
-				cont += "<div style='width:33%'>캠핑장 이름</div>";
-				cont += "<div style='width:33%'>캠핑장 주소</div>";
-				cont += "<div style='width:33%'>캠핑장 전화번호</div>";
-				cont += "</div>"
+ 			cont += "<div style='margin-bottom:40px;'></div>";
  			$.each(data, function(i, item) {  //for ( var i = 0; i<data.length; i++) { } 와같음
  			      // 그리고 index부터 item의 수만큼 수행 된다는 의미, index는 0을 초기값으로 함
  			      //index = i, item 은 데이터길이
  				/* console.log(data[index].camname) */
- 				cont += "<div style='display:flex'>";
- 				cont += "<div style='width:33%'><a href='/cam/glamcamdetail.do?Camno="+data[i].camno+"'>"+data[i].camname+"</a></div>"
+ 				cont += "<div style=''>";
+ 				cont += "<div style='width:33%; float:left; padding:20px; border:1px solid #f0f0f0;' >";
+ 				cont += "<a style='float:left;' href='/cam/glamcamdetail.do?Camno="+data[i].camno+"'>"+data[i].camname+"</a>"
+ 				cont += "<div style='clear:both; float:left; '>"+data[i].camnewadd+"</div>";
+ 				cont += "<div style='clear:both; float:left;'>"+data[i].camtel+"</div>";
+ 				cont += "</div>"
  				//cont += '<div onclick = pageMove.detailParam("'+data[i].camno+'"); style="width:33%">'+data[i].camname+'</div>';
- 				cont += "<div style='width:33%'>"+data[i].camnewadd+"</div>";
- 				cont += "<div style='width:33%'>"+data[i].camtel+"</div>";
  				cont += "</div>"
  			})
  			ajaxview.html(cont);
@@ -152,8 +136,10 @@ $('#analysis').click(function(){
  </script> 
  <div id="ajaxview"></div> 
  
+ 
+ 
                <!-- 반응형 클릭 -->
-<div class="tile s-12 m-6 l-4" style="width:30%; height:250px; margin-right:2%"> 
+<!-- <div class="tile s-12 m-6 l-4" style="width:30%; height:250px; margin-right:2%"> 
   <img src='http://www.blueb.co.kr/SRC2/_image/s_01.jpg'/>
   <div class="text">
   <h1><a onclick = "pageMove.singleUrlParam('cam','glamcamDetail')">안녕하세요</a></h1>
@@ -280,8 +266,28 @@ $('#analysis').click(function(){
     <span></span>
   </div>
   </div>
- </div>
-</div>
+ </div> -->
+               </div>
+            </div>
+         </div>
+        <div id="fourth-block">
+            <div class="line">
+               <div id="news-carousel" class="owl-carousel owl-theme">
+                  <div class="item">
+                     <h2>캠핑고는 ?</h2>
+                     <p class="s-12 m-12 l-8 center">지역별 캠핑지 상세정보를 보여주는 사이트
+                     </p>
+                  </div>
+                  <div class="item">
+                     <h2>캠핑고 기능은 ?</h2>
+                     <p class="s-12 m-12 l-8 center">캠핑지가 많은 지역중 지역별로 분석하여 보여줄수 있다!
+                                          </p>
+                  </div>
+                  <div class="item">
+                     <h2>준비되셨나요 ?</h2>
+                     <p class="s-12 m-12 l-8 center">캠핑고를 시작해보세요 ! 
+                     </p>
+                  </div>
                </div>
             </div>
          </div>
@@ -290,12 +296,12 @@ $('#analysis').click(function(){
       <footer>
          <div class="line">
             <div class="s-12 l-6">
-               <p>Copyright 2019, Vision Design - graphic zoo
+               <p>Copyright 2019, Vision Design - graphic KEUN
                </p>
             </div>
             <div class="s-12 l-6">
                <p class="right">
-                  <a class="right" href="http://www.myresponsee.com" title="Responsee - lightweight responsive framework">Design and coding by Responsee Team</a>
+                  <a class="right" href="http://www.myresponsee.com" title="Responsee - lightweight responsive framework">Design and coding by ChangKeun</a>
                </p>
             </div>
          </div>

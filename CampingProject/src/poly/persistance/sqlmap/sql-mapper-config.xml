@@ -7,9 +7,9 @@
 		<typeAlias type="poly.dto.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="poly.dto.MainDTO" alias="MainDTO" />
 		<typeAlias type="poly.dto.QaDTO" alias="QaDTO"/>
-		<typeAlias type="poly.dto.QaDTO" alias="InqDTO"/>
-		<typeAlias type="poly.dto.AnounceDTO" alias="AnounceDTO"/>
+		<typeAlias type="poly.dto.InqDTO" alias="InqDTO"/>
 		<typeAlias type="poly.dto.RestDTO" alias="RestDTO"/>
+		<typeAlias type="poly.dto.PagingDTO" alias="PagingDTO"/>
 		
     </typeAliases>
 </configuration>

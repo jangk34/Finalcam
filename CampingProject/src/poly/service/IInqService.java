@@ -2,7 +2,7 @@ package poly.service;
 
 import java.util.List;
 
-import poly.dto.AnounceDTO;
+import poly.dto.NoticeDTO;
 import poly.dto.InqDTO;
 import poly.dto.QaDTO;
 

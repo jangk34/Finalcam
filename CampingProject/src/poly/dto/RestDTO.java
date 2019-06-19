@@ -18,7 +18,15 @@ public class RestDTO {
 	private String Campark;
 	private String Camconv;
 	private String regionval;
+	private int pagenum;
 	
+	
+	public int getPagenum() {
+		return pagenum;
+	}
+	public void setPagenum(int pagenum) {
+		this.pagenum = pagenum;
+	}
 	public String getRegionval() {
 		return regionval;
 	}

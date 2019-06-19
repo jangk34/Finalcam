@@ -4,7 +4,7 @@ import java.util.List;
 
 import config.Mapper;
 import jdk.nashorn.internal.runtime.ECMAErrors;
-import poly.dto.AnounceDTO;
+import poly.dto.NoticeDTO;
 import poly.dto.InqDTO;
 import poly.dto.QaDTO;
 

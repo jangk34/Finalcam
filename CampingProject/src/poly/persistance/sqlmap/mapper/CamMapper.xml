@@ -2,16 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- JAVA와 연결할 Mapper 파일 설정 -->
 <mapper namespace="poly.persistance.mapper.CamMapper">
- <select id="getCamList" resultType="RestDTO">
+ <select id="getglamcamList" parameterType="map" resultType="RestDTO">
  	SELECT 
- 		* 
+ 	Camno,
+	Camname,
+	Camctg,
+	Camnewadd,
+	Camtel,
+	Camlon,
+	Camlat,
+	Camconv,
+	Camoldadd
  	FROM rest
+ limit #{pagenum}, 9
+ </select>
+ 
+ <select id="getNoticeListTotalCount" resultType="java.lang.Integer">
+ 
+ SELECT COUNT(*) FROM rest 
+ 
  </select>
  <select id="getcamAnalysis" parameterType="RestDTO" resultType="RestDTO">
  SELECT 
- 	* 
+ 	Camno,
+	Camname,
+	Camctg,
+	Camnewadd,
+	Camtel,
+	Camlon,
+	Camlat,
+	Camconv,
+	Camoldadd
  FROM rest 
 WHERE Camnewadd LIKE CONCAT (#{regionval},'%')
+limit #{pagenum}, 9 
 </select>
 <select id="getglamcamdetail" parameterType="RestDTO" resultType="RestDTO">
 SELECT
@@ -26,8 +50,10 @@ SELECT
 	Camoldadd
 FROM rest
 WHERE Camno=#{Camno} <!-- 디비 테이블 컬럼명 = #은 DTO에있는명 -->
-
 </select>
-
+<select id="getSelect" parameterType="RestDTO" resultType="RestDTO"> 
+ SELECT * FROM rest 
+WHERE Camnewadd LIKE CONCAT (#{regionval},'%')
+</select>
 </mapper>
 
